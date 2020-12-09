@@ -1,0 +1,127 @@
+<?php
+function getExtension( $filepath ) { 
+    //----------NE MODIFIEZ PAS LE CODE AU DESSUS DE CETTE LIGNE, IL SERA REINITIALISE LORS DE l'EXECUTION----------
+   $info = new SplFileInfo($filepath
+    //----------NE MODIFIEZ PAS LE CODE EN DESSOUS DE CETTE LIGNE, IL SERA REINITIALISE LORS DE l'EXECUTION----------
+}
+print "Extension du fichier blah.gif: ".getExtension( "blah.gif" )."<br />\n";
+print "Extension du fichier rmon.fichier.gif: ".getExtension( "mon.fichier.gif" )."<br />\n";
+print "Extension du chemin ceci/estun/fichier: ".getExtension( "ceci/estun/fichier" )."<br />\n";
+?>
+
+
+<?php
+class First {}
+
+class Second {}
+
+class Third extends Second {}
+
+class Fourth {}
+
+function checkObject( $obj ) {
+    //----------NE MODIFIEZ PAS LE CODE AU DESSUS DE CETTE LIGNE, IL SERA REINITIALISE LORS DE l'EXECUTION----------
+   $type = gettype($obj)
+     if($type=='First' || $type=='Second' || $type=='Third'){
+  return true
+     } else{
+ return false
+          }
+    //----------NE MODIFIEZ PAS LE CODE EN DESSOUS DE CETTE LIGNE, IL SERA REINITIALISE LORS DE l'EXECUTION----------
+}
+?>
+
+
+-------
+
+Complétez le code de la fonction findMiddle(). Ouvrez le fichier dont le chemin d'accès est passé en paramètre. Trouvez le milieu de ce fichier (c'est à dire le point où il y a autant d'octets avant et après dans le fichier) et la ligne du fichier qui contient le milieu du fichier. Renvoyez un tableau contenant deux éléments :
+- Index 0 : la position du début de la ligne contenant le milieu du fichier (utilisable avec fseek()).
+- Index 1 : le texte de la ligne contenant le milieu du fichier.
+
+Pour cet exercice, vous pouvez supposer que chaque caractère du fichier n'est codé que sur un seul octet.
+
+<?php 
+$path="path/to/file.txt";
+function findMiddle( $file ) {
+    $ret = array();
+    // $ret[0] : la position du début de la ligne contenant le milieu du fichier (utilisable avec [b]fseek()[/b]).
+    // $ret[1] : le texte de la ligne contenant le milieu du fichier. 
+    
+    //----------NE MODIFIEZ PAS LE CODE AU DESSUS DE CETTE LIGNE, IL SERA REINITIALISE LORS DE l'EXECUTION----------
+
+    //----------NE MODIFIEZ PAS LE CODE EN DESSOUS DE CETTE LIGNE, IL SERA REINITIALISE LORS DE l'EXECUTION----------
+    return $ret;
+}
+
+print_r( $middle = findMiddle( $path ) );
+?>
+function is_anagram($wrd_1, $wrd_2) {
+    //----------NE MODIFIEZ PAS LE CODE AU DESSUS DE CETTE LIGNE, IL SERA REINITIALISE LORS DE l'EXECUTION----------
+    
+    /* Entrez votre code ici */
+<?php
+$wrd_1 = "Albert Einstein";
+$wrd_2 = "Rien n’est établi";
+ 
+function isAnagram($wrd_1, $wrd_2)
+{
+    // on supprime les caractères autre que les lettres de a à z, les accent et on met tout en majuscule pour comparer plus facilement
+    $wrd_1 = strtoupper(preg_replace('/[^a-z]+/i', '', suppr_accents($wrd_1)));
+    $wrd_2 = strtoupper(preg_replace('/[^a-z]+/i', '', suppr_accents($wrd_2)));
+    //c'est deux tableaux vont servire à compter chaque lettres des deux mots
+    $lettreMot1 = array();
+    $lettreMot2 = array();
+    // cette variable sera la valeur renvoyer, par default je suppose que les deux mots dont des anagrammes
+    $isAnagram = true;
+    //si les deux mots on la même longueur on continue la verification
+    if (strlen($wrd_1) == strlen($wrd_2))
+    {
+        //pour chaque caractères
+        foreach(str_split($wrd_1) as $char)
+        {
+           
+            if($char == ' ')
+            {
+                continue;
+            }
+           
+            else if(!isset($lettreMot1[$char]))
+            {
+                $lettreMot1[$char] = 0;
+                continue;
+            }
+            //j'incrémente le nombre de ce caractère
+            $lettreMot1[$char]++;
+        }
+        
+        foreach(str_split($wrd_2) as $char)
+        {
+            if(!isset($lettreMot2[$char]))
+            {
+                $lettreMot2[$char] = 0;
+                continue;
+            }
+            $lettreMot2[$char]++;
+        }
+        
+        foreach($lettreMot1 as $key => $value)
+        {
+            if(!isset($lettreMot2[$key]) || $lettreMot2[$key] !== $lettreMot1[$key])
+            {
+                $isAnagram = false;
+                break;
+            }
+        }
+    }
+    
+    else
+    {
+        $isAnagram = false;
+    }
+ 
+    return $isAnagram;
+}
+    
+    //----------NE MODIFIEZ PAS LE CODE EN DESSOUS DE CETTE LIGNE, IL SERA REINITIALISE LORS DE l'EXECUTION----------
+}
+?>
