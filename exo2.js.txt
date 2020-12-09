@@ -1,0 +1,9 @@
+function convertirJsonToDom(json) {
+  let jsonObj =JSON.parse(json)
+  let tag= document.createElement(jsonObj[tagName]);
+  tag.className = jsonObj[classes].toString();
+  tag.id = jsonObj[id];
+  tag.style.cssText = jsonObj[style];
+  tag.innerHTML = jsonObj[textContent];
+  jsonObj[children].map(child => tag.appendChild(child));
+}
