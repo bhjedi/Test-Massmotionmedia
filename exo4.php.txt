@@ -1,7 +1,8 @@
 <?php
 function getExtension( $filepath ) { 
     //----------NE MODIFIEZ PAS LE CODE AU DESSUS DE CETTE LIGNE, IL SERA REINITIALISE LORS DE l'EXECUTION----------
-   $info = new SplFileInfo($filepath
+   $info = new SplFileInfo($filepath)
+  var_dump($info->getexrtention());
     //----------NE MODIFIEZ PAS LE CODE EN DESSOUS DE CETTE LIGNE, IL SERA REINITIALISE LORS DE l'EXECUTION----------
 }
 print "Extension du fichier blah.gif: ".getExtension( "blah.gif" )."<br />\n";
