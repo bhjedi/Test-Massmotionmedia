@@ -49,7 +49,39 @@ function findMiddle( $file ) {
     // $ret[1] : le texte de la ligne contenant le milieu du fichier. 
     
     //----------NE MODIFIEZ PAS LE CODE AU DESSUS DE CETTE LIGNE, IL SERA REINITIALISE LORS DE l'EXECUTION----------
+<?php 
+$path="path/to/file.txt";
+function findMiddle( $file ) {
+    $ret = array();
+    // $ret[0] : la position du début de la ligne contenant le milieu du fichier (utilisable avec [b]fseek()[/b]).
+    // $ret[1] : le texte de la ligne contenant le milieu du fichier. 
+    
+    //----------NE MODIFIEZ PAS LE CODE AU DESSUS DE CETTE LIGNE, IL SERA REINITIALISE LORS DE l'EXECUTION----------
+ 
+ // count le nombre de cara dans le fichier
+  $count= count($file);
+  
+   $i=0;
+if ($path = fopen($path, "r")) {
+    while(!feof($path) ) {
+         $line = fgets($path);
+         $i+=strlen($line);
+         if($i<=$count/2){
+             $ret[0]=$line[0];
+             
+             $ret[1]=$line;
+             }
+           }
+     
+    fclose($file);
+}
 
+    //----------NE MODIFIEZ PAS LE CODE EN DESSOUS DE CETTE LIGNE, IL SERA REINITIALISE LORS DE l'EXECUTION----------
+    return $ret;
+} 
+
+print_r( $middle = findMiddle( $path ) );
+?>
     //----------NE MODIFIEZ PAS LE CODE EN DESSOUS DE CETTE LIGNE, IL SERA REINITIALISE LORS DE l'EXECUTION----------
     return $ret;
 }
