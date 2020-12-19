@@ -1,8 +1,7 @@
 <?php
 function getExtension( $filepath ) { 
     //----------NE MODIFIEZ PAS LE CODE AU DESSUS DE CETTE LIGNE, IL SERA REINITIALISE LORS DE l'EXECUTION----------
-   $info = new SplFileInfo($filepath)
-  var_dump($info->getexrtention());
+    return substr(strrchr($filepath,'.'),1);
     //----------NE MODIFIEZ PAS LE CODE EN DESSOUS DE CETTE LIGNE, IL SERA REINITIALISE LORS DE l'EXECUTION----------
 }
 print "Extension du fichier blah.gif: ".getExtension( "blah.gif" )."<br />\n";
@@ -104,7 +103,7 @@ function isAnagram($wrd_1, $wrd_2)
     //c'est deux tableaux vont servire à compter chaque lettres des deux mots
     $lettreMot1 = array();
     $lettreMot2 = array();
-    // cette variable sera la valeur renvoyer, par default je suppose que les deux mots dont des anagrammes
+   
     $isAnagram = true;
     //si les deux mots on la même longueur on continue la verification
     if (strlen($wrd_1) == strlen($wrd_2))
