@@ -1,9 +1,47 @@
-function convertirJsonToDom(json) {
-  let jsonObj =JSON.parse(json)
-  let tag= document.createElement(jsonObj[tagName]);
-  tag.className = jsonObj[classes].toString();
-  tag.id = jsonObj[id];
-  tag.style.cssText = jsonObj[style];
-  tag.innerHTML = jsonObj[textContent];
-  jsonObj[children].map(child => tag.appendChild(child));
-}
+document.body.onload = convertirJsonToDom;
+  function convertirJsonToDom(json) {
+  let tag= document.createElement(json["tagName"]);
+  var att = document.createAttribute("class");  
+  att.value = json["classes"].join();   
+            tag.setAttributeNode(att);   
+ 
+ // tag.className = json["classes"].join();
+  console.log(json["classes"].join())
+ tag.id = json["id"];
+ /*var result = Object.keys(json["style"]).map((key) => [key+":"+json["style"][key]]);*/
+  var attt = document.createAttribute("style");  
+  attt.value = json["style"]; 
+  tag.setAttributeNode(attt); 
+
+//  tag.style.cssText = json["style"];
+  console.log(json["style"])
+  tag.innerHTML = json["textContent"];
+  if( json["children"]) {
+  for(let i = 0;i<json["children"].length;i++){
+  let tagTwo=document.createElement(json["children"][i]["tagName"]);
+  if(json["children"][i]["classes"]){
+  var achild = document.createAttribute("class");  
+  achild.value = json["children"][i]["classes"].join(); 
+         tagTwo.setAttributeNode(achild); 
+  //tagTwo.class= json["children"][i]["classes"].join();
+  }
+  
+  var achildd = document.createAttribute("id");  
+  achildd.value = json["children"][i]["id"]; 
+  tagTwo.setAttributeNode(achildd); 
+ // tagTwo.id= json["children"][i]["id"];
+ var achilddd = document.createAttribute("style");  
+  achilddd.value = json["children"][i]["style"];   
+           tagTwo.setAttributeNode(achilddd); 
+//  tagTwo.style.cssText= json["children"][i]["style"];
+  tagTwo.innerHTML = json["children"][i]["textContent"];
+
+  tag.appendChild(tagTwo);
+  }
+  
+  }
+  
+  document.body.appendChild(tag)
+  
+  
+} 
