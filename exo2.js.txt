@@ -2,18 +2,19 @@ document.body.onload = convertirJsonToDom;
   function convertirJsonToDom(json) {
   let tag= document.createElement(json["tagName"]);
   var att = document.createAttribute("class");  
-  att.value = json["classes"].join();   
-            tag.setAttributeNode(att);   
+  att.value = json["classes"].join();       
+         tag.setAttributeNode(att);   
  
  // tag.className = json["classes"].join();
   console.log(json["classes"].join())
  tag.id = json["id"];
- /*var result = Object.keys(json["style"]).map((key) => [key+":"+json["style"][key]]);*/
+ var result = Object.keys(json["style"]).map((key) => [key+":"+json["style"][key]]);
+ console.log(result.join())
   var attt = document.createAttribute("style");  
-  attt.value = json["style"]; 
+  attt.value = result.join(); 
   tag.setAttributeNode(attt); 
 
-//  tag.style.cssText = json["style"];
+ //tag.style.cssText = result.join("");
   console.log(json["style"])
   tag.innerHTML = json["textContent"];
   if( json["children"]) {
@@ -21,9 +22,8 @@ document.body.onload = convertirJsonToDom;
   let tagTwo=document.createElement(json["children"][i]["tagName"]);
   if(json["children"][i]["classes"]){
   var achild = document.createAttribute("class");  
-  achild.value = json["children"][i]["classes"].join(); 
-         tagTwo.setAttributeNode(achild); 
-  //tagTwo.class= json["children"][i]["classes"].join();
+  achild.value = json["children"][i]["classes"].join("");   
+       tagTwo.setAttributeNode(achild); 
   }
   
   var achildd = document.createAttribute("id");  
@@ -31,8 +31,11 @@ document.body.onload = convertirJsonToDom;
   tagTwo.setAttributeNode(achildd); 
  // tagTwo.id= json["children"][i]["id"];
  var achilddd = document.createAttribute("style");  
-  achilddd.value = json["children"][i]["style"];   
-           tagTwo.setAttributeNode(achilddd); 
+ var resultt = Object.keys(json["children"][i]["style"]).map((key) => [key+":"+json["children"][i]["style"][key]]);
+  console.log(resultt.join())
+ // achilddd.value = json["children"][i]["style"]; 
+  achilddd.value = resultt.join();
+  tagTwo.setAttributeNode(achilddd); 
 //  tagTwo.style.cssText= json["children"][i]["style"];
   tagTwo.innerHTML = json["children"][i]["textContent"];
 
@@ -42,6 +45,3 @@ document.body.onload = convertirJsonToDom;
   }
   
   document.body.appendChild(tag)
-  
-  
-} 
