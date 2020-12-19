@@ -1,16 +1,23 @@
+document.body.onload = Link;
 function Link() {
+
+
+function printValue(num) {
+  return function() {
+    alert(num);
+  };
+}
+
   for (let i = 0; i < 10 ; i++) {
     let lien = document.createElement("a");
-    function clickLien() {
-      alert(i);
-    }
+    
 
     var text = document.createTextNode("Lien " + i);
     lien.appendChild(text);
     lien.setAttribute('href', "#");
     lien.setAttribute('id', "i");
     lien.title = "Lien" + i;
-    lien.onclick = () => clickLien();
+    lien.onclick = printValue(i);;
     document.body.appendChild(lien);
     
   }
